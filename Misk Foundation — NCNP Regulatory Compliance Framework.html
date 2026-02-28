@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<!-- saved from url=(0249)file:///Users/wahab/Library/Application%20Support/Claude/local-agent-mode-sessions/2c7c364a-189b-4995-8411-6b61b1a4fa79/825a0ff9-e957-4f16-b0a8-f59667bd233f/local_e711eef9-1b68-400c-b6a3-9d2c605167d8/outputs/ncnp-regulatory-compliance-framework.html -->
+<html lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Misk Foundation — NCNP Regulatory Compliance Framework</title>
+<style>
+/* ═══════════════════════════════════════════════════
+   MISK FOUNDATION BRAND DESIGN SYSTEM
+   Primary: Green (#3BB54A) + Purple (#6B2D8B)
+   ═══════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Misk Primary: Green */
+  --misk-green: #3BB54A;
+  --misk-green-light: #5DD66A;
+  --misk-green-dark: #2D8C39;
+  --misk-green-glow: rgba(59,181,74,.25);
+  /* Misk Primary: Purple */
+  --misk-purple: #6B2D8B;
+  --misk-purple-light: #8E4DB3;
+  --misk-purple-dark: #4E1F66;
+  --misk-purple-glow: rgba(107,45,139,.25);
+  /* Secondary accents */
+  --accent-cyan: #22D3EE;
+  --warn: #F59E0B;
+  --danger: #EF4444;
+  /* Surfaces */
+  --bg: #0B0B14;
+  --bg2: #12121F;
+  --bg3: #1A1A2E;
+  --glass: rgba(255,255,255,.05);
+  --glass2: rgba(255,255,255,.09);
+  --glass-border: rgba(255,255,255,.10);
+  /* Text */
+  --text: #F1F5F9;
+  --text2: #94A3B8;
+  --text3: #64748B;
+  /* Shape */
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Animated gradient mesh — Misk green + purple */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 8% 15%, var(--misk-green-glow), transparent),
+    radial-gradient(ellipse 60% 70% at 92% 80%, var(--misk-purple-glow), transparent),
+    radial-gradient(ellipse 40% 40% at 50% 45%, rgba(59,181,74,.06), transparent);
+  pointer-events: none; z-index: 0;
+  animation: meshShift 22s ease-in-out infinite alternate;
+}
+@keyframes meshShift { 0%{opacity:.65} 100%{opacity:1;transform:scale(1.04)} }
+
+/* ── TOPBAR ── */
+.topbar {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(11,11,20,.88);
+  backdrop-filter: blur(22px) saturate(1.8);
+  -webkit-backdrop-filter: blur(22px) saturate(1.8);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 14px 36px;
+  display: flex; align-items: center; gap: 18px;
+}
+.topbar .logo-text {
+  font-size: 1.1rem; font-weight: 800; letter-spacing: .3px;
+  background: linear-gradient(135deg, var(--misk-green), var(--misk-purple-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.topbar .divider-dot { color: var(--text3); font-size: .9rem; }
+.topbar .framework-label { font-size: .88rem; font-weight: 500; color: var(--text2); }
+.topbar .badge {
+  margin-left: auto;
+  background: var(--glass2); border: 1px solid var(--glass-border);
+  color: var(--text2); padding: 5px 16px; border-radius: 24px; font-size: .73rem; font-weight: 500;
+}
+
+/* ── TAB BAR ── */
+.tab-bar {
+  position: sticky; top: 52px; z-index: 190;
+  display: flex; gap: 4px;
+  background: rgba(11,11,20,.82);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  padding: 10px 36px;
+  border-bottom: 1px solid var(--glass-border);
+  overflow-x: auto;
+}
+.tab-bar::-webkit-scrollbar { height: 0; }
+.tab-bar button {
+  background: none; border: none;
+  padding: 10px 22px; font-size: .83rem; font-weight: 500;
+  color: var(--text3); cursor: pointer;
+  border-radius: 10px; transition: all .25s ease; white-space: nowrap;
+}
+.tab-bar button:hover { color: var(--text); background: var(--glass); }
+.tab-bar button.active {
+  background: linear-gradient(135deg, var(--misk-green), var(--misk-green-dark));
+  color: #fff; font-weight: 600;
+  box-shadow: 0 4px 18px var(--misk-green-glow);
+}
+
+/* ── SECTIONS ── */
+.section { display:none; padding:40px 36px; max-width:1360px; margin:auto; position:relative; z-index:1; animation:fadeUp .4s cubic-bezier(.22,1,.36,1); }
+.section.active { display:block; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+.section-title {
+  font-size: 1.5rem; font-weight: 800;
+  background: linear-gradient(135deg, #fff, var(--misk-green-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 6px;
+}
+.section-sub { font-size: .88rem; color: var(--text2); margin-bottom: 30px; max-width: 740px; }
+
+/* ── GLASS CARD ── */
+.card {
+  background: var(--glass);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 26px; margin-bottom: 18px;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+  position: relative; overflow: hidden;
+}
+.card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background: linear-gradient(90deg, var(--misk-green), var(--misk-purple));
+  opacity:0; transition:opacity .25s;
+}
+.card:hover { transform:translateY(-3px); box-shadow:0 10px 36px rgba(59,181,74,.12); border-color:rgba(59,181,74,.22); }
+.card:hover::before { opacity:1; }
+.card h3 { font-size:1.02rem; font-weight:700; color:#fff; margin-bottom:8px; }
+.card p,.card li { font-size:.87rem; color:var(--text2); }
+.card ul { padding-left:18px; margin-top:8px; }
+.card ul li { margin-bottom:5px; }
+.card ul li::marker { color:var(--misk-green); }
+
+/* Accent variants */
+.card.misk-green { border-left:3px solid var(--misk-green); }
+.card.misk-purple { border-left:3px solid var(--misk-purple-light); }
+.card.warn { border-left:3px solid var(--warn); }
+
+/* ── GRIDS ── */
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; }
+@media(max-width:960px){ .grid2,.grid3{grid-template-columns:1fr;} }
+
+/* ── KPI ── */
+.kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:26px 0; }
+@media(max-width:768px){ .kpi-row{grid-template-columns:1fr 1fr;} }
+.kpi {
+  background:var(--glass); backdrop-filter:blur(12px);
+  border:1px solid var(--glass-border); border-radius:var(--radius);
+  padding:22px; text-align:center; transition:transform .25s,box-shadow .25s;
+}
+.kpi:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(59,181,74,.14); }
+.kpi .kpi-val {
+  font-size:2.1rem; font-weight:900;
+  background:linear-gradient(135deg,var(--misk-green),var(--misk-purple-light));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.kpi .kpi-label { font-size:.76rem; color:var(--text3); margin-top:5px; font-weight:500; }
+
+/* ── TAG ── */
+.tag {
+  display:inline-block; padding:3px 11px; border-radius:6px;
+  font-size:.7rem; font-weight:600; margin-right:4px;
+  background:rgba(59,181,74,.12); color:var(--misk-green-light); border:1px solid rgba(59,181,74,.18);
+}
+.tag.customizable { background:rgba(107,45,139,.12); color:var(--misk-purple-light); border-color:rgba(107,45,139,.2); }
+
+/* ── FLOW ── */
+.flow { display:flex; flex-direction:column; align-items:center; gap:0; margin:34px 0; }
+.flow-step {
+  background:var(--glass); backdrop-filter:blur(12px);
+  border:1px solid var(--glass-border); border-radius:var(--radius);
+  padding:20px 28px; text-align:center; max-width:560px; width:100%;
+  position:relative; transition:all .25s;
+}
+.flow-step:hover { border-color:rgba(59,181,74,.35); box-shadow:0 8px 28px rgba(59,181,74,.1); }
+.flow-step h4 { color:#fff; font-size:.93rem; font-weight:700; margin-bottom:4px; }
+.flow-step p { font-size:.82rem; color:var(--text2); }
+.flow-step .step-num {
+  position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--misk-green),var(--misk-green-dark));
+  color:#fff; width:28px; height:28px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.76rem; font-weight:800; box-shadow:0 4px 14px var(--misk-green-glow);
+}
+.flow-arrow { width:2px; height:34px; background:linear-gradient(to bottom,var(--misk-green),var(--misk-purple)); position:relative; }
+.flow-arrow::after { content:''; position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); border-left:7px solid transparent; border-right:7px solid transparent; border-top:9px solid var(--misk-purple); }
+.flow-decision {
+  background:rgba(245,158,11,.07); border:1px dashed rgba(245,158,11,.3);
+  border-radius:var(--radius); padding:18px 28px; text-align:center; max-width:560px; width:100%;
+}
+.flow-decision h4 { color:var(--warn); font-size:.9rem; font-weight:700; }
+.flow-decision p { font-size:.82rem; color:var(--text2); }
+
+/* ── PROCESS MAP ── */
+.process-map { display:flex; gap:14px; overflow-x:auto; padding:22px 0; }
+.process-map::-webkit-scrollbar { height:5px; }
+.process-map::-webkit-scrollbar-track { background:var(--glass); border-radius:3px; }
+.process-map::-webkit-scrollbar-thumb { background:var(--misk-green); border-radius:3px; }
+.pm-phase { min-width:225px; flex:1; background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius); overflow:hidden; }
+.pm-phase-header { padding:13px 18px; font-weight:700; font-size:.84rem; color:#fff; }
+.pm-phase-body { padding:14px; }
+.pm-phase-body .pm-task {
+  background:rgba(255,255,255,.04); padding:10px 13px;
+  border-radius:var(--radius-sm); margin-bottom:7px;
+  font-size:.79rem; color:var(--text2);
+  border-left:3px solid var(--misk-green); transition:all .2s;
+}
+.pm-phase-body .pm-task:hover { background:rgba(255,255,255,.07); }
+.ph1 .pm-phase-header { background:linear-gradient(135deg,var(--misk-green-dark),var(--misk-green)); }
+.ph2 .pm-phase-header { background:linear-gradient(135deg,#0891B2,var(--accent-cyan)); }
+.ph3 .pm-phase-header { background:linear-gradient(135deg,var(--misk-green),var(--misk-green-light)); }
+.ph4 .pm-phase-header { background:linear-gradient(135deg,#D97706,var(--warn)); }
+.ph5 .pm-phase-header { background:linear-gradient(135deg,var(--misk-purple-dark),var(--misk-purple)); }
+
+/* ── SWIMLANE ── */
+.swimlane { border:1px solid var(--glass-border); border-radius:var(--radius); overflow:hidden; margin:22px 0; }
+.swim-header {
+  display:grid; grid-template-columns:180px 1fr 1fr 1fr;
+  background:linear-gradient(135deg,var(--misk-green-dark),var(--misk-green));
+}
+.swim-header div { padding:13px 16px; font-size:.81rem; font-weight:700; color:#fff; border-right:1px solid rgba(255,255,255,.12); }
+.swim-row { display:grid; grid-template-columns:180px 1fr 1fr 1fr; border-bottom:1px solid var(--glass-border); transition:background .2s; }
+.swim-row:hover { background:rgba(59,181,74,.05); }
+.swim-row:nth-child(even) { background:rgba(255,255,255,.02); }
+.swim-row:nth-child(even):hover { background:rgba(59,181,74,.05); }
+.swim-label { background:rgba(59,181,74,.06); padding:13px 16px; font-weight:600; font-size:.81rem; color:var(--misk-green-light); border-right:1px solid var(--glass-border); display:flex; align-items:center; }
+.swim-cell { padding:11px 16px; font-size:.79rem; color:var(--text2); border-right:1px solid var(--glass-border); }
+.pill { display:inline-block; padding:2px 10px; border-radius:12px; font-size:.71rem; font-weight:700; margin:2px; }
+.pill-r { background:rgba(59,181,74,.16); color:var(--misk-green-light); }
+.pill-a { background:rgba(107,45,139,.16); color:var(--misk-purple-light); }
+.pill-c { background:rgba(34,211,238,.14); color:var(--accent-cyan); }
+.pill-i { background:rgba(148,163,184,.14); color:#94A3B8; }
+
+/* ── TABLE ── */
+.mtable { width:100%; border-collapse:collapse; margin:18px 0; font-size:.83rem; }
+.mtable th { background:linear-gradient(135deg,var(--misk-green-dark),var(--misk-green)); color:#fff; padding:13px 16px; text-align:left; font-weight:600; }
+.mtable td { padding:12px 16px; border-bottom:1px solid var(--glass-border); color:var(--text2); }
+.mtable tr { transition:background .2s; }
+.mtable tr:hover { background:rgba(59,181,74,.05); }
+.mtable tr:nth-child(even) { background:rgba(255,255,255,.02); }
+.status { display:inline-flex; align-items:center; gap:5px; padding:4px 13px; border-radius:20px; font-size:.73rem; font-weight:700; }
+.st-high { background:rgba(239,68,68,.14); color:#F87171; }
+.st-med { background:rgba(245,158,11,.14); color:#FBBF24; }
+.st-low { background:rgba(59,181,74,.14); color:var(--misk-green-light); }
+
+/* ── TIMELINE ── */
+.timeline { position:relative; padding-left:42px; margin:34px 0; }
+.timeline::before { content:''; position:absolute; left:15px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--misk-green),var(--misk-purple)); }
+.tl-item { position:relative; margin-bottom:30px; }
+.tl-item::before {
+  content:''; position:absolute; left:-35px; top:4px;
+  width:14px; height:14px; border-radius:50%;
+  background:linear-gradient(135deg,var(--misk-green),var(--misk-purple-light));
+  box-shadow:0 0 10px var(--misk-green-glow),0 0 0 3px var(--bg);
+}
+.tl-item h4 { font-size:.9rem; color:#fff; font-weight:700; margin-bottom:2px; }
+.tl-item .tl-date { font-size:.73rem; color:var(--misk-green); font-weight:600; }
+.tl-item p { font-size:.83rem; color:var(--text2); margin-top:4px; }
+
+/* ── EXPANDABLE ── */
+.expandable { cursor:pointer; }
+.expandable .expand-icon { transition:transform .3s; display:inline-block; margin-right:8px; font-size:.8rem; }
+.expandable.open .expand-icon { transform:rotate(90deg); }
+.expand-content { display:none; margin-top:14px; padding-top:14px; border-top:1px solid var(--glass-border); }
+.expandable.open .expand-content { display:block; }
+
+/* ── BUTTONS ── */
+.custom-toolbar { display:flex; gap:10px; margin-bottom:18px; flex-wrap:wrap; align-items:center; }
+.btn {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 18px; border-radius:var(--radius-sm);
+  font-size:.82rem; font-weight:600; cursor:pointer;
+  border:1px solid var(--glass-border); transition:all .25s;
+}
+.btn-primary {
+  background:linear-gradient(135deg,var(--misk-green),var(--misk-green-dark));
+  color:#fff; border-color:transparent !important;
+  box-shadow:0 4px 14px var(--misk-green-glow);
+}
+.btn-primary:hover { box-shadow:0 6px 22px rgba(59,181,74,.4); transform:translateY(-1px); }
+.btn-ghost { background:var(--glass); color:var(--text2); }
+.btn-ghost:hover { background:var(--glass2); color:#fff; }
+
+/* ── MODAL ── */
+.modal-overlay { display:none; position:fixed; inset:0; z-index:500; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); align-items:center; justify-content:center; }
+.modal-overlay.show { display:flex; }
+.modal { background:var(--bg2); border:1px solid var(--glass-border); border-radius:var(--radius); padding:30px; width:90%; max-width:540px; box-shadow:0 20px 60px rgba(0,0,0,.4); animation:modalIn .3s ease; }
+@keyframes modalIn { from{opacity:0;transform:scale(.95)} to{opacity:1;transform:scale(1)} }
+.modal h3 { font-size:1.05rem; font-weight:700; margin-bottom:18px; color:#fff; }
+.modal label { display:block; font-size:.81rem; color:var(--text2); margin-bottom:5px; font-weight:500; }
+.modal input,.modal textarea,.modal select {
+  width:100%; padding:10px 13px; border-radius:var(--radius-sm);
+  background:var(--glass); border:1px solid var(--glass-border);
+  color:#fff; font-size:.86rem; margin-bottom:14px; font-family:inherit; transition:border-color .2s;
+}
+.modal input:focus,.modal textarea:focus,.modal select:focus { outline:none; border-color:var(--misk-green); }
+.modal select option { background:var(--bg2); color:#fff; }
+.modal .modal-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:6px; }
+
+/* ── MISC ── */
+.divider { border:none; border-top:1px solid var(--glass-border); margin:34px 0; }
+.editable-hint { font-size:.71rem; color:var(--misk-purple-light); font-weight:500; margin-top:2px; }
+
+@media print {
+  body { background:#fff; color:#000; }
+  body::before { display:none; }
+  .topbar,.tab-bar { position:relative; }
+  .section { display:block !important; }
+  .card { border:1px solid #ccc; background:#fff; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ TOP BAR ═══════ -->
+<div class="topbar">
+  <span class="logo-text">Misk Foundation</span>
+  <span class="divider-dot">/</span>
+  <span class="framework-label">NCNP Regulatory Compliance Framework</span>
+  <span class="badge">v3.0 · مؤسسة مسك</span>
+</div>
+
+<!-- ═══════ TAB BAR ═══════ -->
+<div class="tab-bar" id="tabBar">
+  <button class="" onclick="showTab(&#39;overview&#39;)">Overview</button>
+  <button onclick="showTab(&#39;domains&#39;)" class="">Compliance Domains</button>
+  <button onclick="showTab(&#39;process&#39;)" class="">Process Workflow</button>
+  <button onclick="showTab(&#39;swimlane&#39;)" class="active">RACI Swimlane</button>
+  <button onclick="showTab(&#39;risks&#39;)" class="">Compliance Risks</button>
+  <button onclick="showTab(&#39;lifecycle&#39;)" class="">NCNP Calendar</button>
+  <button onclick="showTab(&#39;system&#39;)" class="">System Modules</button>
+  <button onclick="showTab(&#39;kpis&#39;)" class="">KPIs</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     1 · OVERVIEW
+     ══════════════════════════════════════════════════ -->
+<div class="section" id="overview">
+  <h2 class="section-title">Framework Overview</h2>
+  <p class="section-sub">Misk Foundation's NCNP regulatory compliance management framework. Covers the full lifecycle of regulatory obligations with NCNP — from registration through closure.</p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">6</div><div class="kpi-label">Compliance Domains</div></div>
+    <div class="kpi"><div class="kpi-val">28</div><div class="kpi-label">Control Requirements</div></div>
+    <div class="kpi"><div class="kpi-val">12</div><div class="kpi-label">NCNP Deadlines / Year</div></div>
+    <div class="kpi"><div class="kpi-val">100%</div><div class="kpi-label">Customizable</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card misk-green">
+      <h3>Purpose &amp; Scope</h3>
+      <p>This framework manages the full lifecycle of Misk Foundation's NCNP regulatory compliance — from registering regulatory obligations through to evidence collection, submission, and closure. Scoped exclusively to NCNP regulations.</p>
+      <p style="margin-top:8px;"><strong>Key Principle:</strong> The Compliance Officer manually identifies, registers, and maintains all regulatory obligations. The system is a management tool, not a regulatory scanner.</p>
+    </div>
+    <div class="card misk-purple">
+      <h3>How the System Works</h3>
+      <ul>
+        <li>Compliance Officer registers each NCNP regulation into the system</li>
+        <li>System creates tasks, assigns owners, sets deadlines, and sends reminders</li>
+        <li>Task owners upload evidence; Compliance Officer reviews and approves</li>
+        <li>Submissions to NCNP are tracked; system logs acceptance or rejection</li>
+        <li>All domains, activities, and controls are <strong>fully customizable</strong> — no recoding needed</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="section-title">The Six Compliance Pillars</h2>
+  <p class="section-sub">Each pillar maps to NCNP regulatory requirements. Pillars are customizable — add, edit, or remove as NCNP regulations evolve.</p>
+
+  <div class="grid3">
+    <div class="card"><h3>1. Registration &amp; Licensing</h3><p>Entity registration, NCNP license, bylaws approval, amendments, and renewals.</p><span class="tag">Foundational</span><span class="tag customizable">Customizable</span></div>
+    <div class="card"><h3>2. Governance &amp; Board</h3><p>Board composition, meetings, elections, self-assessment, governance evaluation standards.</p><span class="tag">Ongoing</span><span class="tag customizable">Customizable</span></div>
+    <div class="card"><h3>3. Financial Reporting to NCNP</h3><p>Annual financial report submission, audit report filing, financial integrity standard.</p><span class="tag">Annual</span><span class="tag customizable">Customizable</span></div>
+    <div class="card"><h3>4. Fundraising Compliance</h3><p>Campaign permits under Fundraising Law, donation channel governance, campaign reporting.</p><span class="tag">Per-Campaign</span><span class="tag customizable">Customizable</span></div>
+    <div class="card"><h3>5. Program &amp; Activity Reporting</h3><p>Annual activity report, program alignment with bylaws, beneficiary reporting.</p><span class="tag">Annual</span><span class="tag customizable">Customizable</span></div>
+    <div class="card"><h3>6. Volunteer Reporting</h3><p>Volunteer registration via NCNP platform, volunteer statistics reporting.</p><span class="tag">Annual</span><span class="tag customizable">Customizable</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     2 · COMPLIANCE DOMAINS
+     ══════════════════════════════════════════════════ -->
+<div class="section" id="domains">
+  <h2 class="section-title">Compliance Domains</h2>
+  <p class="section-sub">All domains and controls are fully customizable by the Compliance Officer. Click any domain to expand.</p>
+
+  <div class="custom-toolbar">
+    <button class="btn btn-primary" onclick="openModal(&#39;domainModal&#39;)">+ Add New Domain</button>
+    <button class="btn btn-ghost" onclick="openModal(&#39;controlModal&#39;)">+ Add Control to Existing Domain</button>
+    <span style="margin-left:auto;font-size:.76rem;color:var(--text3);">Click to expand · All data is editable</span>
+  </div>
+
+  <div id="domainList">
+    <div class="card expandable" onclick="this.classList.toggle(&#39;open&#39;)">
+      <h3><span class="expand-icon">▶</span> Domain 1: Registration &amp; Licensing</h3>
+      <p>NCNP requirements for entity registration, licensing, and bylaws.</p>
+      <p class="editable-hint">Compliance Officer registered · Editable</p>
+      <div class="expand-content" onclick="event.stopPropagation()">
+        <table class="mtable">
+          <tbody><tr><th>Control ID</th><th>NCNP Requirement</th><th>Frequency</th><th>Evidence</th><th>Owner</th></tr>
+          <tr><td>REG-01</td><td>Maintain valid NCNP registration certificate</td><td>Annual</td><td>Registration certificate</td><td>Compliance Officer</td></tr>
+          <tr><td>REG-02</td><td>Bylaws approved and stamped by NCNP</td><td>Upon change</td><td>Stamped bylaws</td><td>Legal Counsel</td></tr>
+          <tr><td>REG-03</td><td>Notify NCNP of board changes within 15 days</td><td>Event-driven</td><td>Notification receipt</td><td>Board Secretary</td></tr>
+          <tr><td>REG-04</td><td>Maintain minimum founders/trustees per entity type</td><td>Continuous</td><td>Board roster</td><td>Board Chair</td></tr>
+          <tr><td>REG-05</td><td>Submit establishment amendments to NCNP for approval</td><td>Event-driven</td><td>Amendment approval letter</td><td>CEO / Compliance</td></tr>
+        </tbody></table>
+        <div style="margin-top:12px;"><button class="btn btn-ghost" onclick="openModal(&#39;controlModal&#39;)">+ Add Control</button> <button class="btn btn-ghost">Edit Domain</button></div>
+      </div>
+    </div>
+
+    <div class="card expandable" onclick="this.classList.toggle(&#39;open&#39;)">
+      <h3><span class="expand-icon">▶</span> Domain 2: Governance &amp; Board Oversight</h3>
+      <p>NCNP governance standards, board composition, and evaluation criteria.</p>
+      <p class="editable-hint">Compliance Officer registered · Editable</p>
+      <div class="expand-content" onclick="event.stopPropagation()">
+        <table class="mtable">
+          <tbody><tr><th>Control ID</th><th>NCNP Requirement</th><th>Frequency</th><th>Evidence</th><th>Owner</th></tr>
+          <tr><td>GOV-01</td><td>Board meets minimum composition (≥3 members)</td><td>Continuous</td><td>Board charter</td><td>Board Chair</td></tr>
+          <tr><td>GOV-02</td><td>Regular board meetings with documented minutes</td><td>Quarterly min.</td><td>Meeting minutes</td><td>Board Secretary</td></tr>
+          <tr><td>GOV-03</td><td>Conflict of Interest disclosure by all board members</td><td>Annual + event</td><td>Signed COI forms</td><td>Compliance Officer</td></tr>
+          <tr><td>GOV-04</td><td>Complete NCNP Self-Assessment</td><td>Annual</td><td>Self-assessment report</td><td>CEO</td></tr>
+          <tr><td>GOV-05</td><td>Board elections per bylaws schedule</td><td>Per term cycle</td><td>Election records</td><td>Board Secretary</td></tr>
+          <tr><td>GOV-06</td><td>General Assembly meeting held annually</td><td>Annual</td><td>GA minutes + attendance</td><td>Board Chair</td></tr>
+        </tbody></table>
+        <div style="margin-top:12px;"><button class="btn btn-ghost" onclick="openModal(&#39;controlModal&#39;)">+ Add Control</button> <button class="btn btn-ghost">Edit Domain</button></div>
+      </div>
+    </div>
+
+    <div class="card expandable" onclick="this.classList.toggle(&#39;open&#39;)">
+      <h3><span class="expand-icon">▶</span> Domain 3: Financial Reporting to NCNP</h3>
+      <p>NCNP financial submission requirements.</p>
+      <p class="editable-hint">Compliance Officer registered · Editable</p>
+      <div class="expand-content" onclick="event.stopPropagation()">
+        <table class="mtable">
+          <tbody><tr><th>Control ID</th><th>NCNP Requirement</th><th>Frequency</th><th>Evidence</th><th>Owner</th></tr>
+          <tr><td>FIN-01</td><td>Submit annual audited financial statements to NCNP</td><td>Annual</td><td>Submission receipt</td><td>Compliance Officer</td></tr>
+          <tr><td>FIN-02</td><td>Submit external audit report to NCNP</td><td>Annual</td><td>Audit report + receipt</td><td>Compliance Officer</td></tr>
+          <tr><td>FIN-03</td><td>Comply with NCNP Financial Integrity Standard</td><td>Continuous</td><td>Integrity checklist</td><td>Finance Director</td></tr>
+        </tbody></table>
+        <div style="margin-top:12px;"><button class="btn btn-ghost" onclick="openModal(&#39;controlModal&#39;)">+ Add Control</button> <button class="btn btn-ghost">Edit Domain</button></div>
+      </div>
+    </div>
+
+    <div class="card expandable" onclick="this.classList.toggle(&#39;open&#39;)">
+      <h3><span class="expand-icon">▶</span> Domain 4: Fundraising Compliance</h3>
+      <p>Fundraising Law requirements, permits, and campaign reporting.</p>
+      <p class="editable-hint">Compliance Officer registered · Editable</p>
+      <div class="expand-content" onclick="event.stopPropagation()">
+        <table class="mtable">
+          <tbody><tr><th>Control ID</th><th>NCNP Requirement</th><th>Frequency</th><th>Evidence</th><th>Owner</th></tr>
+          <tr><td>FND-01</td><td>Obtain NCNP permit before any fundraising campaign</td><td>Per campaign</td><td>Permit document</td><td>Fundraising Mgr</td></tr>
+          <tr><td>FND-02</td><td>Donations received only through NCNP-approved channels</td><td>Continuous</td><td>Bank/platform records</td><td>Finance Director</td></tr>
+          <tr><td>FND-03</td><td>Campaign report submitted to NCNP within deadline</td><td>Post-campaign</td><td>Campaign report + receipt</td><td>Fundraising Mgr</td></tr>
+          <tr><td>FND-04</td><td>No fundraising by unauthorized individuals/entities</td><td>Continuous</td><td>Authorization records</td><td>Compliance Officer</td></tr>
+        </tbody></table>
+        <div style="margin-top:12px;"><button class="btn btn-ghost" onclick="openModal(&#39;controlModal&#39;)">+ Add Control</button> <button class="btn btn-ghost">Edit Domain</button></div>
+      </div>
+    </div>
+
+    <div class="card expandable" onclick="this.classList.toggle(&#39;open&#39;)">
+      <h3><span class="expand-icon">▶</span> Domain 5: Program &amp; Activity Reporting</h3>
+      <p>NCNP requirements for activity and program reporting.</p>
+      <p class="editable-hint">Compliance Officer registered · Editable</p>
+      <div class="expand-content" onclick="event.stopPropagation()">
+        <table class="mtable">
+          <tbody><tr><th>Control ID</th><th>NCNP Requirement</th><th>Frequency</th><th>Evidence</th><th>Owner</th></tr>
+          <tr><td>PRG-01</td><td>All activities align with bylaws objectives</td><td>Continuous</td><td>Program-to-bylaws mapping</td><td>Program Director</td></tr>
+          <tr><td>PRG-02</td><td>Obtain permits for activities requiring government approval</td><td>Per activity</td><td>Activity permits</td><td>Operations Mgr</td></tr>
+          <tr><td>PRG-03</td><td>Submit annual activity report to NCNP</td><td>Annual</td><td>Annual report + receipt</td><td>CEO</td></tr>
+        </tbody></table>
+        <div style="margin-top:12px;"><button class="btn btn-ghost" onclick="openModal(&#39;controlModal&#39;)">+ Add Control</button> <button class="btn btn-ghost">Edit Domain</button></div>
+      </div>
+    </div>
+
+    <div class="card expandable" onclick="this.classList.toggle(&#39;open&#39;)">
+      <h3><span class="expand-icon">▶</span> Domain 6: Volunteer Reporting</h3>
+      <p>NCNP volunteer registration and statistics reporting.</p>
+      <p class="editable-hint">Compliance Officer registered · Editable</p>
+      <div class="expand-content" onclick="event.stopPropagation()">
+        <table class="mtable">
+          <tbody><tr><th>Control ID</th><th>NCNP Requirement</th><th>Frequency</th><th>Evidence</th><th>Owner</th></tr>
+          <tr><td>VOL-01</td><td>Register volunteers through NCNP volunteer platform</td><td>Per volunteer</td><td>Platform records</td><td>Volunteer Coord.</td></tr>
+          <tr><td>VOL-02</td><td>Report volunteer statistics to NCNP</td><td>Annual</td><td>Stats report + receipt</td><td>HR Manager</td></tr>
+        </tbody></table>
+        <div style="margin-top:12px;"><button class="btn btn-ghost" onclick="openModal(&#39;controlModal&#39;)">+ Add Control</button> <button class="btn btn-ghost">Edit Domain</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     3 · PROCESS WORKFLOW
+     ══════════════════════════════════════════════════ -->
+<div class="section" id="process">
+  <h2 class="section-title">Process Workflow</h2>
+  <p class="section-sub">End-to-end compliance lifecycle. The Compliance Officer drives all regulatory knowledge; the system manages tasks, deadlines, and evidence.</p>
+
+  <div class="flow">
+    <div class="flow-step">
+      <span class="step-num">1</span>
+      <h4>Regulation Registration</h4>
+      <p>The <strong>Compliance Officer</strong> identifies a new or updated NCNP regulation and manually registers it — domain, description, frequency, evidence, deadline, owner.</p>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <span class="step-num">2</span>
+      <h4>Task Generation &amp; Assignment</h4>
+      <p>System creates a compliance task, auto-assigns to the designated owner, sets the deadline, and sends notification.</p>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <span class="step-num">3</span>
+      <h4>Evidence Collection</h4>
+      <p>Task owner uploads required evidence. System checks completeness against the checklist defined during registration.</p>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-decision">
+      <h4>Review Gate — Evidence Complete?</h4>
+      <p>Compliance Officer reviews. Incomplete → return to Step 3. Complete → proceed.</p>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <span class="step-num">4</span>
+      <h4>Internal Approval</h4>
+      <p>Compliance Officer approves. High-impact items escalate to CEO/Board for secondary sign-off.</p>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <span class="step-num">5</span>
+      <h4>Submission to NCNP</h4>
+      <p>Submission via NCNP electronic portal. Compliance Officer logs date and reference number.</p>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-decision">
+      <h4>NCNP Response</h4>
+      <p>Accepted → compliant. Rejected → re-open, loop to Step 3.</p>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step" style="border-color:rgba(59,181,74,.4);">
+      <span class="step-num" style="background:linear-gradient(135deg,var(--misk-green-dark),var(--misk-green));">6</span>
+      <h4>Closure &amp; Archival</h4>
+      <p>Task marked "Compliant". Evidence archived. Dashboard updated. Recurring items auto-scheduled.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="section-title">Platform Process Phases</h2>
+  <p class="section-sub">The Compliance Officer drives the "Identify" phase — the system supports, not replaces, human judgment.</p>
+
+  <div class="process-map">
+    <div class="pm-phase ph1"><div class="pm-phase-header">IDENTIFY</div><div class="pm-phase-body">
+      <div class="pm-task">CO reviews NCNP regulation updates</div>
+      <div class="pm-task">CO registers new obligation in system</div>
+      <div class="pm-task">CO assigns domain, owner, deadline</div>
+      <div class="pm-task">CO classifies priority level</div>
+    </div></div>
+    <div class="pm-phase ph2"><div class="pm-phase-header">PLAN</div><div class="pm-phase-body">
+      <div class="pm-task">System generates compliance task</div>
+      <div class="pm-task">Auto-assigns per CO configuration</div>
+      <div class="pm-task">Calendar deadline set</div>
+      <div class="pm-task">Notifications sent to owners</div>
+    </div></div>
+    <div class="pm-phase ph3"><div class="pm-phase-header">EXECUTE</div><div class="pm-phase-body">
+      <div class="pm-task">Owner collects evidence</div>
+      <div class="pm-task">Owner completes checklists</div>
+      <div class="pm-task">CO reviews &amp; approves</div>
+      <div class="pm-task">Submit to NCNP portal</div>
+    </div></div>
+    <div class="pm-phase ph4"><div class="pm-phase-header">MONITOR</div><div class="pm-phase-body">
+      <div class="pm-task">Track NCNP acceptance/rejection</div>
+      <div class="pm-task">Dashboard status updates</div>
+      <div class="pm-task">Escalation for overdue tasks</div>
+      <div class="pm-task">Audit trail logging</div>
+    </div></div>
+    <div class="pm-phase ph5"><div class="pm-phase-header">IMPROVE</div><div class="pm-phase-body">
+      <div class="pm-task">CO reviews compliance cycle</div>
+      <div class="pm-task">CO updates controls if needed</div>
+      <div class="pm-task">CO archives retired regulations</div>
+      <div class="pm-task">Lessons learned captured</div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     4 · RACI SWIMLANE
+     ══════════════════════════════════════════════════ -->
+<div class="section active" id="swimlane">
+  <h2 class="section-title">RACI Responsibility Matrix</h2>
+  <p class="section-sub">Fully customizable by the Compliance Officer. Add new activities as NCNP introduces requirements.</p>
+
+  <div class="custom-toolbar">
+    <button class="btn btn-primary" onclick="openModal(&#39;activityModal&#39;)">+ Add Activity</button>
+    <span style="margin-left:auto;font-size:.76rem;color:var(--text3);">All activities editable</span>
+  </div>
+
+  <div class="swimlane">
+    <div class="swim-header">
+      <div>NCNP Compliance Activity</div>
+      <div>Board / CEO</div>
+      <div>Compliance Officer</div>
+      <div>Department Heads</div>
+    </div>
+    <div class="swim-row"><div class="swim-label">NCNP License Renewal</div><div class="swim-cell"><span class="pill pill-a">A</span> Approves</div><div class="swim-cell"><span class="pill pill-r">R</span> Prepares &amp; submits</div><div class="swim-cell"><span class="pill pill-i">I</span> Informed</div></div>
+    <div class="swim-row"><div class="swim-label">Board Change Notification</div><div class="swim-cell"><span class="pill pill-a">A</span> Authorizes</div><div class="swim-cell"><span class="pill pill-r">R</span> Files with NCNP</div><div class="swim-cell"><span class="pill pill-i">I</span> Informed</div></div>
+    <div class="swim-row"><div class="swim-label">Annual Financial Report to NCNP</div><div class="swim-cell"><span class="pill pill-a">A</span> Signs off</div><div class="swim-cell"><span class="pill pill-r">R</span> Submits to NCNP</div><div class="swim-cell"><span class="pill pill-c">C</span> Finance prepares</div></div>
+    <div class="swim-row"><div class="swim-label">Fundraising Permit Application</div><div class="swim-cell"><span class="pill pill-a">A</span> Authorizes</div><div class="swim-cell"><span class="pill pill-r">R</span> Applies to NCNP</div><div class="swim-cell"><span class="pill pill-c">C</span> Fundraising inputs</div></div>
+    <div class="swim-row"><div class="swim-label">Campaign Report to NCNP</div><div class="swim-cell"><span class="pill pill-i">I</span> Informed</div><div class="swim-cell"><span class="pill pill-r">R</span> Reviews &amp; submits</div><div class="swim-cell"><span class="pill pill-c">C</span> Fundraising prepares</div></div>
+    <div class="swim-row"><div class="swim-label">NCNP Self-Assessment</div><div class="swim-cell"><span class="pill pill-a">A</span> Signs off</div><div class="swim-cell"><span class="pill pill-r">R</span> Conducts &amp; submits</div><div class="swim-cell"><span class="pill pill-c">C</span> Provides data</div></div>
+    <div class="swim-row"><div class="swim-label">Annual Activity Report to NCNP</div><div class="swim-cell"><span class="pill pill-a">A</span> Approves</div><div class="swim-cell"><span class="pill pill-r">R</span> Compiles &amp; submits</div><div class="swim-cell"><span class="pill pill-c">C</span> Programs prepares</div></div>
+    <div class="swim-row"><div class="swim-label">Volunteer Stats Report to NCNP</div><div class="swim-cell"><span class="pill pill-i">I</span> Informed</div><div class="swim-cell"><span class="pill pill-r">R</span> Submits to NCNP</div><div class="swim-cell"><span class="pill pill-c">C</span> HR prepares</div></div>
+    <div class="swim-row"><div class="swim-label">Bylaws Amendment Filing</div><div class="swim-cell"><span class="pill pill-a">A</span> Board approves</div><div class="swim-cell"><span class="pill pill-r">R</span> Files with NCNP</div><div class="swim-cell"><span class="pill pill-i">I</span> Informed</div></div>
+    <div class="swim-row"><div class="swim-label">Governance Evaluation</div><div class="swim-cell"><span class="pill pill-r">R</span> Leads</div><div class="swim-cell"><span class="pill pill-r">R</span> Coordinates</div><div class="swim-cell"><span class="pill pill-c">C</span> Inputs</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     5 · COMPLIANCE RISKS (NCNP-specific only)
+     ══════════════════════════════════════════════════ -->
+<div class="section" id="risks">
+  <h2 class="section-title">NCNP Compliance Risk Indicators</h2>
+  <p class="section-sub">NCNP-specific compliance risks only. Broader risk management is handled by the Risk Officer's independent framework.</p>
+
+  <table class="mtable">
+    <tbody><tr><th>Risk Indicator</th><th>Trigger</th><th>Severity</th><th>NCNP Consequence</th><th>System Action</th></tr>
+    <tr><td>Overdue NCNP submission</td><td>Task passes regulatory deadline</td><td><span class="status st-high">High</span></td><td>Formal warning / sanctions</td><td>Auto-escalate to CEO + Board Chair</td></tr>
+    <tr><td>NCNP submission rejected</td><td>NCNP returns with revisions</td><td><span class="status st-med">Medium</span></td><td>Re-submission required</td><td>Re-open task, notify CO + owner</td></tr>
+    <tr><td>Expired NCNP license</td><td>License renewal not completed</td><td><span class="status st-high">High</span></td><td>Suspension of activities</td><td>Alert 90, 60, 30 days before expiry</td></tr>
+    <tr><td>Unauthorized fundraising</td><td>Campaign without NCNP permit</td><td><span class="status st-high">High</span></td><td>Referral to prosecution</td><td>Immediate alert to CEO + CO</td></tr>
+    <tr><td>Self-assessment not completed</td><td>Annual deadline passed</td><td><span class="status st-med">Medium</span></td><td>Formal warning</td><td>Escalation at 30, 14, 7 days</td></tr>
+    <tr><td>Board notification delay</td><td>Change not notified within 15 days</td><td><span class="status st-low">Low</span></td><td>Administrative notice</td><td>Auto-reminder on roster change</td></tr>
+    <tr><td>Volunteer reporting gap</td><td>Annual stats not submitted</td><td><span class="status st-low">Low</span></td><td>Administrative notice</td><td>Calendar reminder before deadline</td></tr>
+  </tbody></table>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     6 · NCNP CALENDAR
+     ══════════════════════════════════════════════════ -->
+<div class="section" id="lifecycle">
+  <h2 class="section-title">NCNP Regulatory Calendar</h2>
+  <p class="section-sub">NCNP-facing submission deadlines and regulatory milestones only.</p>
+
+  <div class="timeline">
+    <div class="tl-item"><h4>Q1: License &amp; Registration Check</h4><span class="tl-date">January – March</span><p>Verify NCNP license validity. Confirm bylaws are current. Update board roster if changes occurred.</p></div>
+    <div class="tl-item"><h4>Q1: Financial Report Preparation</h4><span class="tl-date">January – March</span><p>Coordinate with Finance on audited statements. Prepare NCNP financial report submission package.</p></div>
+    <div class="tl-item"><h4>Q2: NCNP Financial &amp; Activity Submissions</h4><span class="tl-date">April – June</span><p>Submit audited financials, annual activity report, and governance report to NCNP. Report General Assembly outcomes.</p></div>
+    <div class="tl-item"><h4>Q3: Self-Assessment &amp; Governance Evaluation</h4><span class="tl-date">July – September</span><p>Complete and submit NCNP self-assessment. Review fundraising campaign compliance YTD.</p></div>
+    <div class="tl-item"><h4>Q4: Year-End Compliance Close</h4><span class="tl-date">October – December</span><p>Submit volunteer statistics. Close all NCNP tasks. Archive evidence. Prepare next year's NCNP calendar.</p></div>
+    <div class="tl-item"><h4>Ongoing: Event-Driven Submissions</h4><span class="tl-date">Throughout the year</span><p>Board change notifications (15 days). Fundraising permits (before campaign). Campaign reports (post-campaign). Bylaws amendments. Activity permits.</p></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     7 · SYSTEM MODULES
+     ══════════════════════════════════════════════════ -->
+<div class="section" id="system">
+  <h2 class="section-title">System Modules</h2>
+  <p class="section-sub">Platform modules for Misk Foundation's NCNP regulatory compliance management.</p>
+
+  <div class="grid2">
+    <div class="card misk-green"><h3>Compliance Register</h3><p>Central database where the Compliance Officer registers all NCNP regulations. Fully customizable domains, controls, and evidence requirements.</p></div>
+    <div class="card misk-purple"><h3>Task &amp; Deadline Manager</h3><p>Auto-generates tasks from registered regulations. Assigns owners, sets deadlines, sends reminders (14, 7, 3 days), escalates overdue items.</p></div>
+    <div class="card misk-green"><h3>Evidence Vault</h3><p>Document upload, versioning, archival. Validates completeness against checklists. Searchable and exportable.</p></div>
+    <div class="card misk-purple"><h3>NCNP Submission Tracker</h3><p>Logs all NCNP submissions — date, reference, status (pending/accepted/rejected). Single view of all NCNP interactions.</p></div>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:14px;color:#fff;">User Roles</h3>
+  <div class="grid3">
+    <div class="card"><h3>Board / CEO</h3><ul><li>View NCNP compliance dashboard</li><li>Approve high-impact submissions</li><li>Receive escalation alerts</li></ul></div>
+    <div class="card"><h3>Compliance Officer</h3><ul><li>Register &amp; manage all NCNP regulations</li><li>Configure domains, controls, RACI</li><li>Review evidence and approve tasks</li><li>Track NCNP submissions</li></ul></div>
+    <div class="card"><h3>Department Staff</h3><ul><li>View assigned tasks</li><li>Upload evidence</li><li>Complete checklists</li><li>Receive reminders</li></ul></div>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:14px;color:#fff;">Notification Rules</h3>
+  <div class="swimlane">
+    <div class="swim-header" style="grid-template-columns:1fr 1fr 1fr 1fr;"><div>Trigger</div><div>Timing</div><div>Recipients</div><div>Channel</div></div>
+    <div class="swim-row" style="grid-template-columns:1fr 1fr 1fr 1fr;"><div class="swim-cell" style="font-weight:600;color:#fff;">New task assigned</div><div class="swim-cell">Immediately</div><div class="swim-cell">Task Owner</div><div class="swim-cell">In-app + Email</div></div>
+    <div class="swim-row" style="grid-template-columns:1fr 1fr 1fr 1fr;"><div class="swim-cell" style="font-weight:600;color:#fff;">NCNP deadline approaching</div><div class="swim-cell">14, 7, 3 days before</div><div class="swim-cell">Owner + CO</div><div class="swim-cell">Email + SMS</div></div>
+    <div class="swim-row" style="grid-template-columns:1fr 1fr 1fr 1fr;"><div class="swim-cell" style="font-weight:600;color:#fff;">Task overdue</div><div class="swim-cell">Day 1 → Day 3 → Day 7</div><div class="swim-cell">Owner → CO → CEO</div><div class="swim-cell">SMS + Email (escalating)</div></div>
+    <div class="swim-row" style="grid-template-columns:1fr 1fr 1fr 1fr;"><div class="swim-cell" style="font-weight:600;color:#fff;">NCNP submission rejected</div><div class="swim-cell">Immediately</div><div class="swim-cell">CO + Owner</div><div class="swim-cell">In-app + Email</div></div>
+    <div class="swim-row" style="grid-template-columns:1fr 1fr 1fr 1fr;"><div class="swim-cell" style="font-weight:600;color:#fff;">License expiry warning</div><div class="swim-cell">90, 60, 30 days before</div><div class="swim-cell">CO + CEO</div><div class="swim-cell">Email + SMS</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     8 · KPIs
+     ══════════════════════════════════════════════════ -->
+<div class="section" id="kpis">
+  <h2 class="section-title">NCNP Compliance KPIs</h2>
+  <p class="section-sub">Measuring Misk Foundation's compliance status with NCNP regulations only.</p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val" style="background:linear-gradient(135deg,var(--misk-green),var(--misk-green-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">100%</div><div class="kpi-label">NCNP Submissions On-Time</div></div>
+    <div class="kpi"><div class="kpi-val">24/28</div><div class="kpi-label">Controls Compliant</div></div>
+    <div class="kpi"><div class="kpi-val" style="background:linear-gradient(135deg,#D97706,var(--warn));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">2</div><div class="kpi-label">Pending NCNP Tasks</div></div>
+    <div class="kpi"><div class="kpi-val" style="background:linear-gradient(135deg,var(--misk-green),var(--misk-green-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">0</div><div class="kpi-label">Overdue Submissions</div></div>
+  </div>
+
+  <table class="mtable">
+    <tbody><tr><th>KPI</th><th>Target</th><th>Measures</th></tr>
+    <tr><td>NCNP Submission On-Time Rate</td><td>≥ 100%</td><td>% of submissions before regulatory deadline</td></tr>
+    <tr><td>NCNP First-Time Acceptance Rate</td><td>≥ 95%</td><td>% accepted without revision</td></tr>
+    <tr><td>NCNP Control Compliance Rate</td><td>≥ 95%</td><td>% of controls in "Compliant" status</td></tr>
+    <tr><td>Open Overdue Tasks</td><td>0</td><td>NCNP tasks past deadline</td></tr>
+    <tr><td>License Validity</td><td>Always Valid</td><td>NCNP license current</td></tr>
+    <tr><td>Self-Assessment Score</td><td>≥ 80/100</td><td>NCNP governance evaluation score</td></tr>
+    <tr><td>Avg Task Completion Time</td><td>≤ 5 days</td><td>Days from creation to evidence upload</td></tr>
+    <tr><td>Fundraising Permit Compliance</td><td>100%</td><td>% campaigns with permit before launch</td></tr>
+  </tbody></table>
+
+  <div class="card misk-green" style="margin-top:22px;">
+    <h3>Dashboard Widgets</h3>
+    <ul>
+      <li><strong>NCNP Submission Timeline:</strong> Log of all submissions with acceptance/rejection status</li>
+      <li><strong>Deadline Countdown:</strong> Upcoming NCNP deadlines with days remaining</li>
+      <li><strong>Domain Compliance Heat Map:</strong> 6-domain visual — compliant / non-compliant</li>
+      <li><strong>NCNP Interaction History:</strong> Chronological record of all NCNP communications</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     MODALS
+     ══════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="domainModal"><div class="modal">
+  <h3>Add New Compliance Domain</h3>
+  <label>Domain Name</label><input type="text" placeholder="e.g., Anti-Money Laundering Compliance">
+  <label>Description</label><textarea rows="3" placeholder="NCNP requirements this domain covers..."></textarea>
+  <label>Frequency</label><select><option>Annual</option><option>Quarterly</option><option>Monthly</option><option>Per-Event</option><option>Continuous</option></select>
+  <label>Priority</label><select><option>High</option><option>Medium</option><option>Low</option></select>
+  <div class="modal-actions"><button class="btn btn-ghost" onclick="closeModal(&#39;domainModal&#39;)">Cancel</button><button class="btn btn-primary" onclick="closeModal(&#39;domainModal&#39;)">Add Domain</button></div>
+</div></div>
+
+<div class="modal-overlay" id="controlModal"><div class="modal">
+  <h3>Add New Control Requirement</h3>
+  <label>Domain</label><select><option>1. Registration &amp; Licensing</option><option>2. Governance &amp; Board</option><option>3. Financial Reporting</option><option>4. Fundraising Compliance</option><option>5. Program &amp; Activity Reporting</option><option>6. Volunteer Reporting</option></select>
+  <label>Control ID</label><input type="text" placeholder="e.g., REG-06">
+  <label>NCNP Requirement</label><textarea rows="3" placeholder="What NCNP requires..."></textarea>
+  <label>Frequency</label><select><option>Annual</option><option>Quarterly</option><option>Per Event</option><option>Continuous</option></select>
+  <label>Required Evidence</label><input type="text" placeholder="e.g., Signed approval letter">
+  <label>Owner</label><input type="text" placeholder="e.g., Compliance Officer">
+  <div class="modal-actions"><button class="btn btn-ghost" onclick="closeModal(&#39;controlModal&#39;)">Cancel</button><button class="btn btn-primary" onclick="closeModal(&#39;controlModal&#39;)">Add Control</button></div>
+</div></div>
+
+<div class="modal-overlay" id="activityModal"><div class="modal">
+  <h3>Add RACI Activity</h3>
+  <label>Activity Name</label><input type="text" placeholder="e.g., New NCNP Permit Application">
+  <label>Board / CEO Role</label><select><option>R - Responsible</option><option>A - Accountable</option><option>C - Consulted</option><option>I - Informed</option></select>
+  <label>Compliance Officer Role</label><select><option>R - Responsible</option><option>A - Accountable</option><option>C - Consulted</option><option>I - Informed</option></select>
+  <label>Department Heads Role</label><select><option>R - Responsible</option><option>A - Accountable</option><option>C - Consulted</option><option>I - Informed</option></select>
+  <div class="modal-actions"><button class="btn btn-ghost" onclick="closeModal(&#39;activityModal&#39;)">Cancel</button><button class="btn btn-primary" onclick="closeModal(&#39;activityModal&#39;)">Add Activity</button></div>
+</div></div>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-bar button').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map={overview:0,domains:1,process:2,swimlane:3,risks:4,lifecycle:5,system:6,kpis:7};
+  const btns=document.querySelectorAll('.tab-bar button');
+  if(map[id]!==undefined&&btns[map[id]])btns[map[id]].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function openModal(id){document.getElementById(id).classList.add('show');}
+function closeModal(id){document.getElementById(id).classList.remove('show');}
+document.querySelectorAll('.modal-overlay').forEach(o=>{o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('show');});});
+</script>
+
+
+</body></html>
